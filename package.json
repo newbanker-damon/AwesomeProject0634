@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "ios": "react-native run-ios  --simulator 'iPhone 13'",
+    "ios:release": "react-native run-ios --configuration Release --simulator 'iPhone 13'",
+    "ios:staging": "react-native run-ios --configuration Staging --simulator 'iPhone 13'"
   },
   "dependencies": {
     "react": "16.13.1",
