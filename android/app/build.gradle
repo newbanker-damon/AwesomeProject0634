@@ -154,8 +154,28 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            applicationIdSuffix ".debug"
+
+            // 显示不同的软件名
+            resValue "string", "app_name", "@string/app_name_debug"
+        }
+
+        releaseStaging {
+
+            initWith release
+
+            signingConfig signingConfigs.debug
+
+            applicationIdSuffix ".staging"
+
+            // 显示不同的软件名
+            resValue "string", "app_name", "@string/app_name_staging"
+
         }
         release {
+
+            resValue "string", "app_name", "@string/app_name_release"
+
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.debug

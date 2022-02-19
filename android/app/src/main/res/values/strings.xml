@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AwesomeProject0634</string>
+    <string name="app_name_release">AP</string>
+    <string name="app_name_debug">AP_Debug</string>
+    <string name="app_name_staging">AP_Staging</string>
 </resources>
