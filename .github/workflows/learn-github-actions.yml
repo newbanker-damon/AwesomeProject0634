@@ -9,5 +9,6 @@ jobs:
         with:
           node-version: '12'
           cache: 'npm'
-      - run: npm install    
+      - run: npm install
+      - run: npx pod-install
       - run: npx react-native run-ios
