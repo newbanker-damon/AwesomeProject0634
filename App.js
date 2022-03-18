@@ -23,8 +23,11 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import TextInputTest from './src/TextInputTest';
 
 const App: () => React$Node = () => {
+  return <TextInputTest />;
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
