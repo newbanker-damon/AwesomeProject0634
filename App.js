@@ -23,10 +23,12 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import TextInputTest from './src/TextInputTest';
+
+import VerticalBorderBug from './src/VerticalBorderBug';
 
 const App: () => React$Node = () => {
-  return <TextInputTest />;
+  //return <TextInputTest />;
+  return <VerticalBorderBug />;
 
   return (
     <>
