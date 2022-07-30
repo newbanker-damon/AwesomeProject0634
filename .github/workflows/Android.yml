@@ -6,7 +6,7 @@ name: Android-CI
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "master" ]
+    branches: ['master']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,23 +22,21 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      
-      - uses: actions/setup-node@v3
-        with: 
-          node-version: "14"
-          cache: 'npm'
+
       - name: Setup Java JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '11'
-          
-      - run: npm install
-        
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn install --immutable
+
       # Runs a single command using the runners shell
       - name: Run script
         run: |
           cd android
           ./gradlew aR
-  
-      

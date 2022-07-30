@@ -1,4 +1,4 @@
-name: iOS-CI
+name: Cache-CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
@@ -17,15 +17,26 @@ jobs:
         with:
           node-version: '14'
           cache: 'yarn'
-      - run: yarn install --immutable
 
-      - uses: actions/cache@v3
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('yarn.lock') }}
+
+      - name: Install node modules if cache not present
+        run: yarn install --immutable
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+
+      - name: Cache pods
+        uses: actions/cache@v3
         id: cache-pods
         with:
           path: ios/Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
 
-      - name: pod-install
+      - name: Install pods if cache not present
         if: steps.cache-pods.outputs.cache-hit != 'true'
         run: npx pod-install
 
