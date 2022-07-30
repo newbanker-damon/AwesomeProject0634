@@ -1,13 +1,13 @@
-name: learn-github-actions
+name: iOS
 on: [push]
 jobs:
   run-react-native:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '12'
+          node-version: '14'
           cache: 'npm'
       - run: npm install
       - run: npx pod-install
